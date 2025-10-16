@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "types": ["@types/jest", "node", "reflect-metadata"],
+    "types": [],
     "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "experimentalDecorators": true,

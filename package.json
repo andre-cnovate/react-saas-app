@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
+    "build": "npx tsc",
+    "start": "node dist/server.js",
     "lint": "eslint"
   },
-"dependencies": {
+  "dependencies": {
     "cors": "2.8",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
