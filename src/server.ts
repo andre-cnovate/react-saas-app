@@ -1,7 +1,11 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
+// @ts-ignore
+const port = process.env.PORT || 80;
 
 app.get('/', (_req, res) => {
   res.send('Hello World from TypeScript Express!');
