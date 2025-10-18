@@ -2,9 +2,10 @@
   "name": "react-saas-app",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/index.js",
     "lint": "eslint"
   },
   "dependencies": {
