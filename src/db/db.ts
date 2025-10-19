@@ -1,9 +1,20 @@
+import { AzureCliCredential, ManagedIdentityCredential } from "@azure/identity";
 import sql from "mssql";
-import { DefaultAzureCredential } from "@azure/identity";
 
-const credential = new DefaultAzureCredential();
+function getAzureCredential() {
+  const IS_LOCAL = process.env.IS_LOCAL;
+  if (!IS_LOCAL) {
+    console.log("🔐 Using Managed Identity for authentication");
+    return new ManagedIdentityCredential();
+  }
+
+  console.log("💻 Using Azure CLI credential (local)");
+  return new AzureCliCredential();
+}
+
 
 async function getToken() {
+  const credential = getAzureCredential();
   const tokenResponse = await credential.getToken("https://database.windows.net/.default");
   console.log("Got token from managed identity:", tokenResponse?.token?.substring(0, 20) + "...");
   return tokenResponse.token;
@@ -26,8 +37,5 @@ export async function getConnection() {
 
   const pool = new sql.ConnectionPool(config);
   await pool.connect();
-
-  const result = await pool.request().query(`SELECT USER_NAME() AS current_user`);
-console.log("SQL sees user as:", result.recordset[0].current_user);
   return pool;
 }
