@@ -26,5 +26,8 @@ export async function getConnection() {
 
   const pool = new sql.ConnectionPool(config);
   await pool.connect();
+
+  const result = await pool.request().query(`SELECT USER_NAME() AS current_user`);
+console.log("SQL sees user as:", result.recordset[0].current_user);
   return pool;
 }
