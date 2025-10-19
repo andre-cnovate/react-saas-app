@@ -4,7 +4,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 const credential = new DefaultAzureCredential();
 
 async function getToken() {
-  const tokenResponse = await credential.getToken("https://database.windows.net/");
+  const tokenResponse = await credential.getToken("https://database.windows.net/.default");
   return tokenResponse.token;
 }
 
