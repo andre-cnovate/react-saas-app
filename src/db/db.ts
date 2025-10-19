@@ -16,7 +16,6 @@ function getAzureCredential() {
 async function getToken() {
   const credential = getAzureCredential();
   const tokenResponse = await credential.getToken("https://database.windows.net/.default");
-  console.log("Got token from managed identity:", tokenResponse?.token?.substring(0, 20) + "...");
   return tokenResponse.token;
 }
 
@@ -24,7 +23,7 @@ export async function getConnection() {
   const accessToken = await getToken();
 
   const config: sql.config = {
-    server: process.env.AZURE_SQL_SERVER!, // e.g. my-saas-db.database.windows.net
+    server: process.env.AZURE_SQL_SERVER!,
     database: process.env.AZURE_SQL_DATABASE!,
     authentication: {
       type: "azure-active-directory-access-token",

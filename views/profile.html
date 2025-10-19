@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="/">CNovate SaaS Poc</a>
         <div>
           <a class="btn btn-outline-light btn-sm me-2" href="/">Home</a>
-          <a class="btn btn-warning btn-sm" href="/logout">Logout</a>
+          <a class="btn btn-danger btn-sm" href="/logout">Logout</a>
         </div>
       </div>
     </nav>
@@ -29,11 +29,18 @@
 
               <hr>
 
-              <h5>Quick actions</h5>
-              <div class="d-flex gap-2">
-                <a href="/logout" class="btn btn-danger">Logout</a>
-                <a href="/" class="btn btn-outline-primary">Home</a>
-              </div>
+              <main>
+                <h1>Proof of Concept – Utility Zone</h1>
+                <div id="uuidBox">
+                  <h3>Generate a UUID</h3>
+                  <p>This random UUID can be used as a unique ID for tests, data entries, etc.</p>
+                  <button class="btn btn-outline-primary" id="generateBtn">Generate UUID</button>
+                  <div class="mt-2" style="font-size: 1.2rem;" class="text-primary" id="generatedUuid"></div>
+                </div>
+              </main>
+
+              <hr>
+
             </div>
           </div>
 
@@ -46,4 +53,19 @@
       <small>Azure AD + MSAL demo</small>
     </footer>
   </body>
+
+  <script>
+    function generateUuid() {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    }
+
+    document.getElementById("generateBtn").addEventListener("click", () => {
+      const uuid = generateUuid();
+      document.getElementById("generatedUuid").innerText = uuid;
+    });
+  </script>
 </html>

@@ -3,9 +3,9 @@ import session from "express-session";
 import dotenv from "dotenv";
 import { ConfidentialClientApplication } from "@azure/msal-node";
 import path from "path";
-import fs from "fs/promises";
 import sql from "mssql";
 import { getConnection } from "./db/db";
+import { loadHtml } from "./util/load-html";
 
 dotenv.config();
 
@@ -41,11 +41,6 @@ const msalClient = new ConfidentialClientApplication({
   },
 });
 
-// helper to load html
-async function loadHtml(fileName: string) {
-  const filePath = path.join(__dirname, "..", "views", fileName);
-  return fs.readFile(filePath, { encoding: "utf-8" });
-}
 
 app.get("/", async (_req, res) => {
   // Serve static index.html
