@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>No Active Subscription - SaaS Connector</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/styles.css">
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">SaaS Connector</a>
+        <div>
+          <a class="btn btn-outline-light btn-sm me-2" href="/">Home</a>
+          <a class="btn btn-warning btn-sm" href="/logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <div class="d-flex align-items-start gap-3">
+                <div class="flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.146 4.146a.5.5 0 0 0-.708.708L7.293 7 5.438 8.854a.5.5 0 1 0 .707.707L8 7.707l1.854 1.854a.5.5 0 0 0 .707-.707L8.707 7l1.855-1.854a.5.5 0 0 0-.707-.707L8 6.293 6.146 4.146z"/>
+                  </svg>
+                </div>
+
+                <div class="flex-grow-1">
+                  <h3 class="mb-2">No active subscription found</h3>
+                  <p class="mb-3 text-muted">
+                    Hi <strong id="displayName">{{displayName}}</strong> — it looks like your organization (<strong id="tenantId">{{tenantId}}</strong>) doesn't have an active subscription for this product.
+                  </p>
+
+                  <p class="mb-0">
+                    You can:
+                  </p>
+                  <ul>
+                    <li>Contact your billing administrator to purchase or activate a subscription.</li>
+                    <li>Request a trial or contact our sales team for assistance.</li>
+                    <li>Return to the home page or logout and try another account.</li>
+                  </ul>
+
+                  <div class="mt-4 d-flex gap-2">
+                    <a href="mailto:sales@yourcompany.com?subject=Request%20Trial%20and%20Subscription" class="btn btn-primary">
+                      Request Trial / Contact Sales
+                    </a>
+
+                    <a href="/support-request" class="btn btn-outline-secondary">
+                      Create Support Request
+                    </a>
+
+                    <a href="/" class="btn btn-light">
+                      Return Home
+                    </a>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <small class="text-muted">If you believe this is an error, contact support with your tenant ID: <code>{{tenantId}}</code></small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-muted small mt-3">Need help? Email <a href="mailto:support@yourcompany.com">support@yourcompany.com</a></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center text-muted py-3">
+      <small>Azure Marketplace • SaaS Connector</small>
+    </footer>
+  </body>
+</html>

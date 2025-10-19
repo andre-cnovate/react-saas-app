@@ -1,22 +1,32 @@
 {
   "name": "react-saas-app",
   "version": "0.1.0",
-  "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc && npm run copy-files",
+    "copy-static": "npx copyfiles views/**/* public/**/* dist/",
+    "copy-files": "npm run copy-views && npm run copy-public",
+    "copy-views": "mkdir -p dist/views && cp -r src/../views dist/",
+    "copy-public": "mkdir -p dist/public && cp -r src/../public dist/",
     "start": "node dist/index.js",
-    "lint": "eslint"
+    "dev": "npx ts-node-dev --respawn --transpile-only src/server.ts"
   },
   "dependencies": {
+    "@azure/identity": "^4.13.0",
+    "@azure/msal-node": "^3.8.0",
     "cors": "2.8",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "reflect-metadata": "^0.2.2",
+    "express-session": "^1.18.2",
+    "mssql": "^12.0.0",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "@types/mssql": "^9.1.8",
     "@types/node": "^24.8.1",
+    "copyfiles": "^2.4.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",

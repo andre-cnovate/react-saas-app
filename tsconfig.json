@@ -9,7 +9,6 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "types": [],
     "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "experimentalDecorators": true,
