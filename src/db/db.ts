@@ -5,6 +5,7 @@ const credential = new DefaultAzureCredential();
 
 async function getToken() {
   const tokenResponse = await credential.getToken("https://database.windows.net/.default");
+  console.log("Got token from managed identity:", tokenResponse?.token?.substring(0, 20) + "...");
   return tokenResponse.token;
 }
 
